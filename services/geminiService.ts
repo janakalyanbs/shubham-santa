@@ -6,14 +6,29 @@ import { niceList } from "../utils/niceList";
 const NICE_LIST = niceList;
 
 const FALLBACK_GIFTS = [
+  // High-priority 3D model gifts
+  { giftName: "iPhone 17 Pro Max Titanium", message: "The future is in your hands. Capture magic, connect with love, and shine bright!", theme: "tech" },
+  { giftName: "Futuristic Cyber Truck", message: "Drive into the new year with unbreakable spirit and power.", theme: "tech" },
+  { giftName: "High-Tech Space Astronaut Suit", message: "Explore the universe and reach for the stars!", theme: "tech" },
+  { giftName: "A Vintage Camera", message: "Capture every beautiful moment of your journey.", theme: "classic" },
+  { giftName: "Custom Electric Guitar", message: "Rock around the Christmas tree and let your soul sing!", theme: "classic" },
+  { giftName: "Designer Sneakers", message: "Walk into the new year with confidence and style.", theme: "luxury" },
+  { giftName: "A Cute Robot Guardian", message: "May this magical friend protect your biggest dreams and keep you smiling every single day. You are a star!", theme: "whimsical" },
+  { giftName: "The Lantern of Eternal Love", message: "In a world full of stars, you are my only sun. You guide me through the dark and warm my soul.", theme: "luxury" },
+
+  // Additional 3D model compatible gifts
+  { giftName: "Antique Camera", message: "Preserve your precious memories in timeless elegance.", theme: "classic" },
+  { giftName: "Modern Chair", message: "Comfort meets style in this perfect seating companion.", theme: "luxury" },
+  { giftName: "Delicious Burger Meal", message: "Sometimes happiness is just good food and great company!", theme: "whimsical" },
+  { giftName: "Retro BoomBox", message: "Fill your world with the music that moves your soul.", theme: "classic" },
+  { giftName: "Damaged Helmet", message: "A symbol of resilience and the battles you've overcome.", theme: "luxury" },
+  { giftName: "Toy Car", message: "Zoom through life with endless adventure and joy!", theme: "whimsical" },
+
+  // Inspirational fallbacks
   { giftName: "A Year of Serenity", message: "May your days be calm, your mind clear, and your heart light.", theme: "inspiration" },
   { giftName: "Ticket to Mars", message: "For the one who dreams bigger than the sky.", theme: "tech" },
   { giftName: "The Gift of Wisdom", message: "Trust your intuition, it is your best compass.", theme: "inspiration" },
   { giftName: "A Cozy Designer Chair", message: "Take a seat, breathe, and appreciate how far you've come.", theme: "luxury" },
-  { giftName: "A Giant Delicious Burger Meal", message: "Sometimes happiness is just good food and great company!", theme: "whimsical" },
-  { giftName: "A Vintage Radio", message: "Tune into the frequency of joy and good vibes.", theme: "classic" },
-  { giftName: "iPhone 17 Pro Max Titanium", message: "The future is in your hands. Capture magic, connect with love, and shine bright!", theme: "tech" },
-  { giftName: "Futuristic Cyber Truck", message: "Drive into the new year with unbreakable spirit and power.", theme: "tech" },
 ];
 
 export const generateChristmasGift = async (name: string): Promise<Omit<GiftData, 'recipient'>> => {

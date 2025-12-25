@@ -8,6 +8,12 @@ export const getGiftModel = (name: string = ""): string | null => {
   const modelMap: Record<string, string> = {
     // Phones & High Tech
     "iphone": "/iphone_17_pro.glb",
+    "voyager": "/voyager_space_satellite__draft.glb",
+    "neuralink": "/neuralink_chip.glb",
+    "brain-computer": "/neuralink_chip.glb",
+    "brain computer": "/neuralink_chip.glb",
+    "cyber truck": "/cyber_truck.glb",
+    "cybertruck": "/cyber_truck.glb",
     
     // Vehicles
     "car": "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/ToyCar/glTF-Binary/ToyCar.glb",

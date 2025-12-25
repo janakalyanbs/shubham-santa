@@ -38,5 +38,10 @@
     "giftName": "The Lantern of Eternal Love",
     "message": "To my love: You are the light that guides me home. May our bond shine brighter than any star in the sky. I love you, forever.",
     "theme": "luxury"
+  },
+  "carlsagan": {
+    "giftName": "Voyager Golden Record",
+    "message": "To Carl Sagan: The cosmos is within us. We are made of star-stuff. May this record carry the story of humanity across the infinite sea of space.",
+    "theme": "science"
   }
 }
