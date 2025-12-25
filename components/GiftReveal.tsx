@@ -19,7 +19,7 @@ const GiftReveal: React.FC<GiftRevealProps> = ({ data, onReset, hasNextGift }) =
   const isInspirational = data.theme === 'inspiration';
   
   // Special checks for specific people
-  const isLove = data.recipient.toLowerCase().includes('bhagwati');
+  const isLove = data.recipient.toLowerCase().includes('bhagawati');
   const isSister = data.recipient.toLowerCase().includes('ranjana');
   const isCarlSagan = data.recipient.toLowerCase().includes('carl sagan') || data.recipient.toLowerCase().includes('sagan');
 

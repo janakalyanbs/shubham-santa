@@ -47,6 +47,10 @@ export const getGiftModel = (name: string = ""): string | null => {
     "lantern": "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Lantern/glTF-Binary/Lantern.glb",
     "light": "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Lantern/glTF-Binary/Lantern.glb",
     "lamp": "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Lantern/glTF-Binary/Lantern.glb",
+    "rose": "/rose.glb",
+    "flower": "/rose.glb",
+    "ring": "/ring.glb",
+    "diamond": "/ring_02.glb",
     "duck": "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Duck/glTF-Binary/Duck.glb",
     
     // Audio / Radio

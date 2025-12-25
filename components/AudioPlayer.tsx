@@ -1,14 +1,32 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-// Using a public domain / creative commons source for Jingle Bells
-const MUSIC_URL = "https://actions.google.com/sounds/v1/holidays/jingle_bells.ogg";
+// Default fallback (public domain) for festive theme
+const DEFAULT_FESTIVE = "https://actions.google.com/sounds/v1/holidays/jingle_bells.ogg";
 
-const AudioPlayer: React.FC = () => {
+const THEME_MAP: Record<string, string> = {
+  festive: DEFAULT_FESTIVE,
+  romantic: "/romantic.mp3",
+  whimsical: "/other.mp3",
+  cosmic: "/other.mp3",
+  tech: "/other.mp3",
+  classic: "/other.mp3",
+  inspiration: "/other.mp3",
+};
+
+interface Props {
+  theme?: string | null;
+  autoplayOnTheme?: boolean;
+  onAutoplayHandled?: () => void;
+}
+
+const AudioPlayer: React.FC<Props> = ({ theme = 'festive', autoplayOnTheme = false, onAutoplayHandled }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const chimeRef = useRef<HTMLAudioElement | null>(null);
 
+  // Initialize with the default festive loop so manual toggles still work
   useEffect(() => {
-    audioRef.current = new Audio(MUSIC_URL);
+    audioRef.current = new Audio(THEME_MAP.festive);
     audioRef.current.loop = true;
     audioRef.current.volume = 0.3;
 
@@ -17,18 +35,66 @@ const AudioPlayer: React.FC = () => {
         audioRef.current.pause();
         audioRef.current = null;
       }
+      if (chimeRef.current) {
+        chimeRef.current.pause();
+        chimeRef.current = null;
+      }
     };
   }, []);
 
+  // When a theme is requested to autoplay (triggered by a user gesture), play a chime then the theme loop
+  useEffect(() => {
+    if (!autoplayOnTheme || !theme) return;
+
+    try {
+      const chime = new Audio('/audio/chime.ogg');
+      chime.volume = 0.45;
+      chimeRef.current = chime;
+
+      // After chime ends, start theme background loop
+      chime.onended = () => {
+        if (audioRef.current) {
+          audioRef.current.pause();
+        }
+        const bg = new Audio(THEME_MAP[theme] || THEME_MAP.festive);
+        bg.loop = true;
+        bg.volume = 0.3;
+        audioRef.current = bg;
+        bg.play().then(() => setIsPlaying(true)).catch(() => {});
+        if (onAutoplayHandled) onAutoplayHandled();
+      };
+
+      chime.play().catch(() => {
+        // If chime fails (autoplay policy), fall back to starting the theme immediately
+        if (audioRef.current) {
+          audioRef.current.pause();
+        }
+        const bg = new Audio(THEME_MAP[theme] || THEME_MAP.festive);
+        bg.loop = true;
+        bg.volume = 0.3;
+        audioRef.current = bg;
+        bg.play().then(() => setIsPlaying(true)).catch(() => {});
+        if (onAutoplayHandled) onAutoplayHandled();
+      });
+    } catch (e) {
+      console.error('Audio autoplay failed', e);
+      if (onAutoplayHandled) onAutoplayHandled();
+    }
+  }, [autoplayOnTheme, theme, onAutoplayHandled]);
+
   const togglePlay = () => {
-    if (!audioRef.current) return;
+    if (!audioRef.current) {
+      audioRef.current = new Audio(THEME_MAP[theme] || THEME_MAP.festive);
+      audioRef.current.loop = true;
+      audioRef.current.volume = 0.3;
+    }
 
     if (isPlaying) {
       audioRef.current.pause();
+      setIsPlaying(false);
     } else {
-      audioRef.current.play().catch(e => console.error("Playback failed", e));
+      audioRef.current.play().then(() => setIsPlaying(true)).catch(e => console.error('Playback failed', e));
     }
-    setIsPlaying(!isPlaying);
   };
 
   return (
