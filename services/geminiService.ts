@@ -12,6 +12,8 @@ const FALLBACK_GIFTS = [
   { giftName: "A Cozy Designer Chair", message: "Take a seat, breathe, and appreciate how far you've come.", theme: "luxury" },
   { giftName: "A Giant Delicious Burger Meal", message: "Sometimes happiness is just good food and great company!", theme: "whimsical" },
   { giftName: "A Vintage Radio", message: "Tune into the frequency of joy and good vibes.", theme: "classic" },
+  { giftName: "iPhone 17 Pro Max Titanium", message: "The future is in your hands. Capture magic, connect with love, and shine bright!", theme: "tech" },
+  { giftName: "Futuristic Cyber Truck", message: "Drive into the new year with unbreakable spirit and power.", theme: "tech" },
 ];
 
 export const generateChristmasGift = async (name: string): Promise<Omit<GiftData, 'recipient'>> => {
@@ -48,6 +50,8 @@ export const generateChristmasGift = async (name: string): Promise<Omit<GiftData
       3. Something whimsical.
 
       If it's a physical object, try to suggest items that might have 3D models like: Car, Sneaker, Camera, Robot, Astronaut, Chair, Burger, Radio, Helmet, or Lantern.
+      
+      Occasionally, suggest high-value items like "iPhone 17 Pro Max" or "Cyber Truck" or "Sports Car".
 
       If it's abstract (Advice/Goal), make the message truly inspiring, heartwarming, and elegant.
       

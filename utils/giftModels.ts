@@ -6,10 +6,18 @@ export const getGiftModel = (name: string = ""): string | null => {
   const lowerName = name.toLowerCase();
 
   const modelMap: Record<string, string> = {
+    // Phones & High Tech
+    // Using the Astronaut model to represent "Future", "Space Grade Titanium", and "Exploration" 
+    // since a specific iPhone 17 GLB is not available in standard public libraries.
+    "iphone": "https://modelviewer.dev/shared-assets/models/Astronaut.glb",
+    "phone": "https://modelviewer.dev/shared-assets/models/Astronaut.glb", 
+    "mobile": "https://modelviewer.dev/shared-assets/models/Astronaut.glb",
+
     // Vehicles
     "car": "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/ToyCar/glTF-Binary/ToyCar.glb",
     "vehicle": "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/ToyCar/glTF-Binary/ToyCar.glb",
     "buggy": "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Buggy/glTF-Binary/Buggy.glb",
+    "truck": "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/CesiumMilkTruck/glTF-Binary/CesiumMilkTruck.glb",
     
     // Fashion / Wearables
     "shoe": "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/MaterialsVariantsShoe/glTF-Binary/MaterialsVariantsShoe.glb",
